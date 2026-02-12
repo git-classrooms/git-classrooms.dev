@@ -1,0 +1,194 @@
+---
+import type { Locale } from "../i18n";
+import { useTranslations } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).quickStart;
+---
+
+<section id="quick-start" class="relative z-10 py-24 md:py-32">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center mb-12">
+      <h2
+        class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
+      >
+        {t.heading} <span class="gradient-text">{t.headingHighlight}</span>
+      </h2>
+      <p
+        class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
+        style="animation-delay: 0.1s"
+      >
+        {t.subline}
+      </p>
+    </div>
+
+    <div
+      class="max-w-2xl mx-auto animate-fade-in-up"
+      style="animation-delay: 0.2s"
+    >
+      <div
+        class="glass rounded-xl overflow-hidden hover:border-primary/30 hover:shadow-[0_0_30px_hsl(185_100%_50%/0.06)] transition-all duration-500"
+      >
+        <div
+          class="flex items-center justify-between px-4 py-2.5 border-b border-border/50"
+        >
+          <div class="flex items-center gap-2">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/80"></div>
+            </div>
+            <span class="ml-2 text-[11px] font-mono text-muted/60"
+              >terminal</span
+            >
+          </div>
+          <button
+            id="copy-btn"
+            class="group/copy inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono text-muted hover:text-foreground hover:bg-white/[0.06] transition-all duration-200"
+          >
+            <svg
+              id="copy-icon"
+              class="w-3 h-3"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+              ></path>
+            </svg>
+            <svg
+              id="check-icon"
+              class="w-3 h-3 hidden text-[hsl(140,70%,50%)]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span id="copy-label" data-default={t.copy} data-copied={t.copied}
+              >{t.copy}</span
+            >
+          </button>
+        </div>
+        <div class="p-5 font-mono text-[13px] leading-7">
+          <div class="flex gap-2">
+            <span class="text-primary select-none">$</span>
+            <span class="text-foreground"
+              >git clone https://github.com/git-classrooms/git-classrooms</span
+            >
+          </div>
+          <div class="flex gap-2">
+            <span class="text-primary select-none">$</span>
+            <span class="text-foreground">cd git-classrooms</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="text-primary select-none">$</span>
+            <span class="text-foreground">docker compose up -d</span>
+          </div>
+          <div class="flex gap-2 mt-1">
+            <span class="text-[hsl(140,70%,50%)] select-none">✓</span>
+            <span class="text-muted">PostgreSQL ready</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="text-[hsl(140,70%,50%)] select-none">✓</span>
+            <span class="text-muted">git-classrooms running on :8080</span>
+          </div>
+          <div class="flex gap-2 mt-2">
+            <span class="text-primary select-none">$</span>
+            <span class="text-foreground">open http://localhost:8080/setup</span
+            >
+          </div>
+          <div class="flex gap-2">
+            <span class="text-[hsl(280,100%,70%)] select-none">→</span>
+            <span class="text-muted"
+              >Connect your GitLab instance and start teaching</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-wrap justify-center gap-3 mt-8 animate-fade-in-up"
+      style="animation-delay: 0.3s"
+    >
+      {
+        t.highlights.map((h) => (
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border/50 bg-card/30 font-mono text-xs text-muted">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary/60" />
+            {h}
+          </span>
+        ))
+      }
+    </div>
+
+    <div
+      class="text-center mt-8 animate-fade-in-up"
+      style="animation-delay: 0.4s"
+    >
+      <a
+        href="https://github.com/git-classrooms/git-classrooms"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-sm font-mono text-primary hover:text-primary/80 transition-colors duration-200"
+      >
+        {t.docsLink}
+        <svg
+          class="w-3.5 h-3.5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M7 17L17 7M17 7H7M17 7v10"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById("copy-btn");
+  const label = document.getElementById("copy-label");
+  const copyIcon = document.getElementById("copy-icon");
+  const checkIcon = document.getElementById("check-icon");
+
+  const commands = [
+    "git clone https://github.com/git-classrooms/git-classrooms",
+    "cd git-classrooms",
+    "docker compose up -d",
+  ].join("\n");
+
+  btn?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(commands);
+      const copied = label?.getAttribute("data-copied") || "Copied!";
+      const original = label?.getAttribute("data-default") || "Copy";
+
+      if (label) label.textContent = copied;
+      copyIcon?.classList.add("hidden");
+      checkIcon?.classList.remove("hidden");
+
+      setTimeout(() => {
+        if (label) label.textContent = original;
+        copyIcon?.classList.remove("hidden");
+        checkIcon?.classList.add("hidden");
+      }, 2000);
+    } catch {
+      // clipboard API not available
+    }
+  });
+</script>

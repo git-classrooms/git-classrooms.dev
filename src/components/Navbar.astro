@@ -36,7 +36,7 @@ const t = useTranslations(locale);
       </span>
     </a>
 
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden lg:flex items-center gap-5">
       <a
         href="#features"
         class="text-sm text-muted hover:text-foreground transition-colors duration-200"
@@ -48,9 +48,19 @@ const t = useTranslations(locale);
         >{t.nav.howItWorks}</a
       >
       <a
+        href="#architecture"
+        class="text-sm text-muted hover:text-foreground transition-colors duration-200"
+        >{t.nav.architecture}</a
+      >
+      <a
         href="#tech-stack"
         class="text-sm text-muted hover:text-foreground transition-colors duration-200"
         >{t.nav.techStack}</a
+      >
+      <a
+        href="#quick-start"
+        class="text-sm text-muted hover:text-foreground transition-colors duration-200"
+        >{t.nav.quickStart}</a
       >
 
       <!-- Language switcher — git branch metaphor -->
@@ -128,7 +138,7 @@ const t = useTranslations(locale);
 
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 text-muted hover:text-foreground transition-colors"
+      class="lg:hidden p-2 text-muted hover:text-foreground transition-colors"
       aria-label="Toggle menu"
     >
       <svg
@@ -146,7 +156,7 @@ const t = useTranslations(locale);
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-border/50">
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-border/50">
     <div class="px-6 py-4 flex flex-col gap-4">
       <a
         href="#features"
@@ -159,9 +169,19 @@ const t = useTranslations(locale);
         >{t.nav.howItWorks}</a
       >
       <a
+        href="#architecture"
+        class="text-sm text-muted hover:text-foreground transition-colors"
+        >{t.nav.architecture}</a
+      >
+      <a
         href="#tech-stack"
         class="text-sm text-muted hover:text-foreground transition-colors"
         >{t.nav.techStack}</a
+      >
+      <a
+        href="#quick-start"
+        class="text-sm text-muted hover:text-foreground transition-colors"
+        >{t.nav.quickStart}</a
       >
       <!-- Mobile language section — git branch style -->
       <div class="pt-2 border-t border-border/30">

@@ -7,7 +7,9 @@ const en = {
   nav: {
     features: "Features",
     howItWorks: "How it works",
+    architecture: "Architecture",
     techStack: "Tech Stack",
+    quickStart: "Quick Start",
   },
   hero: {
     badge: "open source · self-hosted",
@@ -91,6 +93,21 @@ const en = {
       gradeValue: "A-",
     },
   },
+  architecture: {
+    heading: "How it all",
+    headingHighlight: "connects",
+    subline:
+      "A simple architecture that integrates seamlessly with your existing GitLab infrastructure.",
+    components: {
+      gitlab: "GitLab Instance",
+      gitlabDesc: "Your repositories, CI/CD, and user management",
+      api: "git-classrooms API",
+      apiDesc: "Orchestrates classrooms, assignments, and grading",
+      dashboard: "Dashboard",
+      dashboardDesc: "Manage everything from a modern web interface",
+      db: "PostgreSQL",
+    },
+  },
   techStack: {
     heading: "Built with",
     headingHighlight: "modern tools",
@@ -101,6 +118,30 @@ const en = {
       frontend: "Frontend",
       integration: "Integration",
       infra: "Infrastructure",
+    },
+  },
+  quickStart: {
+    heading: "Up and running in",
+    headingHighlight: "minutes",
+    subline:
+      "Self-hosting git-classrooms takes a single command. Your infrastructure, your rules.",
+    copy: "Copy",
+    copied: "Copied!",
+    docsLink: "Read the setup guide",
+    highlights: ["< 5 min setup", "Single command", "Docker-ready"] as const,
+  },
+  openSource: {
+    heading: "Built in the",
+    headingHighlight: "open",
+    subline:
+      "Free and open-source under the MPL-2.0 license. Contributions, issues, and feedback are always welcome.",
+    cta: "Star on GitHub",
+    ctaSecondary: "View Source",
+    stats: {
+      license: "MPL-2.0",
+      licenseLabel: "License",
+      type: "Open Source",
+      typeLabel: "Forever free",
     },
   },
   footer: {
@@ -118,7 +159,9 @@ const de: typeof en = {
   nav: {
     features: "Features",
     howItWorks: "So funktioniert's",
+    architecture: "Architektur",
     techStack: "Tech Stack",
+    quickStart: "Quick Start",
   },
   hero: {
     badge: "open source · self-hosted",
@@ -202,6 +245,21 @@ const de: typeof en = {
       gradeValue: "1,3",
     },
   },
+  architecture: {
+    heading: "Wie alles",
+    headingHighlight: "zusammenspielt",
+    subline:
+      "Eine einfache Architektur, die sich nahtlos in deine bestehende GitLab-Infrastruktur integriert.",
+    components: {
+      gitlab: "GitLab-Instanz",
+      gitlabDesc: "Deine Repositories, CI/CD und Benutzerverwaltung",
+      api: "git-classrooms API",
+      apiDesc: "Orchestriert Klassenzimmer, Aufgaben und Bewertung",
+      dashboard: "Dashboard",
+      dashboardDesc: "Verwalte alles über eine moderne Weboberfläche",
+      db: "PostgreSQL",
+    },
+  },
   techStack: {
     heading: "Gebaut mit",
     headingHighlight: "modernen Tools",
@@ -212,6 +270,30 @@ const de: typeof en = {
       frontend: "Frontend",
       integration: "Integration",
       infra: "Infrastruktur",
+    },
+  },
+  quickStart: {
+    heading: "Einsatzbereit in",
+    headingHighlight: "Minuten",
+    subline:
+      "Das Self-Hosting von git-classrooms braucht nur einen Befehl. Deine Infrastruktur, deine Regeln.",
+    copy: "Kopieren",
+    copied: "Kopiert!",
+    docsLink: "Zur Installationsanleitung",
+    highlights: ["< 5 Min. Setup", "Ein Befehl", "Docker-ready"] as const,
+  },
+  openSource: {
+    heading: "Entwickelt im",
+    headingHighlight: "Offenen",
+    subline:
+      "Frei und quelloffen unter der MPL-2.0-Lizenz. Beiträge, Issues und Feedback sind immer willkommen.",
+    cta: "Star auf GitHub",
+    ctaSecondary: "Quellcode ansehen",
+    stats: {
+      license: "MPL-2.0",
+      licenseLabel: "Lizenz",
+      type: "Open Source",
+      typeLabel: "Für immer kostenlos",
     },
   },
   footer: {

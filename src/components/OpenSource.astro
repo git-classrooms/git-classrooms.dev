@@ -1,0 +1,203 @@
+---
+import type { Locale } from "../i18n";
+import { useTranslations } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).openSource;
+---
+
+<section class="relative z-10 py-24 md:py-32 overflow-hidden">
+  <!-- Background glow -->
+  <div
+    class="absolute inset-0 flex items-center justify-center pointer-events-none"
+    aria-hidden="true"
+  >
+    <div
+      class="w-[500px] h-[250px] bg-primary/[0.04] rounded-full blur-[100px]"
+    >
+    </div>
+    <div
+      class="absolute w-[300px] h-[200px] translate-x-32 bg-[hsl(280,100%,60%)]/[0.03] rounded-full blur-[80px]"
+    >
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-6 relative">
+    <!-- Git graph decoration -->
+    <div
+      class="mb-10 animate-fade-in-up flex justify-center"
+      aria-hidden="true"
+    >
+      <svg
+        class="w-full max-w-md h-auto"
+        viewBox="0 0 480 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Main branch -->
+        <line
+          x1="20"
+          y1="40"
+          x2="460"
+          y2="40"
+          stroke="hsl(185 100% 50%)"
+          stroke-width="1.5"
+          opacity="0.15"></line>
+
+        <!-- Feature branch 1 (up) -->
+        <path
+          d="M100 40 C115 40 115 16 130 16 L210 16 C225 16 225 40 240 40"
+          stroke="hsl(280 100% 60%)"
+          stroke-width="1.5"
+          opacity="0.2"></path>
+
+        <!-- Feature branch 2 (down) -->
+        <path
+          d="M300 40 C315 40 315 64 330 64 L370 64 C385 64 385 40 400 40"
+          stroke="hsl(185 100% 50%)"
+          stroke-width="1.5"
+          opacity="0.2"></path>
+
+        <!-- Main branch commits -->
+        <circle cx="40" cy="40" r="3.5" class="fill-primary git-node n1"
+        ></circle>
+        <circle cx="100" cy="40" r="4" class="fill-primary git-node n2"
+        ></circle>
+        <circle cx="240" cy="40" r="4" class="fill-primary git-node n3"
+        ></circle>
+        <circle cx="300" cy="40" r="4" class="fill-primary git-node n4"
+        ></circle>
+        <circle cx="400" cy="40" r="4" class="fill-primary git-node n5"
+        ></circle>
+        <circle cx="440" cy="40" r="3.5" class="fill-primary git-node n6"
+        ></circle>
+
+        <!-- Branch 1 commits -->
+        <circle
+          cx="155"
+          cy="16"
+          r="3"
+          class="fill-[hsl(280,100%,60%)] git-node n7"></circle>
+        <circle
+          cx="190"
+          cy="16"
+          r="3"
+          class="fill-[hsl(280,100%,60%)] git-node n8"></circle>
+
+        <!-- Branch 2 commits -->
+        <circle cx="345" cy="64" r="3" class="fill-primary git-node n9"
+        ></circle>
+        <circle cx="375" cy="64" r="3" class="fill-primary git-node n10"
+        ></circle>
+      </svg>
+    </div>
+
+    <div class="text-center">
+      <h2
+        class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
+        style="animation-delay: 0.05s"
+      >
+        {t.heading} <span class="gradient-text">{t.headingHighlight}</span>
+      </h2>
+      <p
+        class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
+        style="animation-delay: 0.1s"
+      >
+        {t.subline}
+      </p>
+
+      <!-- Stats -->
+      <div
+        class="flex justify-center items-stretch gap-6 sm:gap-10 mt-12 animate-fade-in-up"
+        style="animation-delay: 0.2s"
+      >
+        <div class="text-center">
+          <div
+            class="text-xl sm:text-2xl font-mono font-bold text-primary leading-none"
+          >
+            {t.stats.license}
+          </div>
+          <div class="text-[11px] font-mono text-muted mt-2">
+            {t.stats.licenseLabel}
+          </div>
+        </div>
+        <div class="w-px bg-border/30"></div>
+        <div class="text-center">
+          <div
+            class="text-xl sm:text-2xl font-mono font-bold gradient-text leading-none"
+          >
+            {t.stats.type}
+          </div>
+          <div class="text-[11px] font-mono text-muted mt-2">
+            {t.stats.typeLabel}
+          </div>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 animate-fade-in-up"
+        style="animation-delay: 0.3s"
+      >
+        <a
+          href="https://github.com/git-classrooms/git-classrooms"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative inline-flex items-center gap-2.5 px-7 py-3 font-mono text-sm font-semibold rounded-lg bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+          {t.cta}
+        </a>
+        <a
+          href="https://github.com/git-classrooms/git-classrooms"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-7 py-3 font-mono text-sm font-semibold rounded-lg border border-border text-foreground hover:border-primary/40 hover:text-primary transition-all duration-200"
+        >
+          {t.ctaSecondary}
+          <svg
+            class="w-3.5 h-3.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17L17 7M17 7H7M17 7v10"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .git-node {
+    opacity: 0.35;
+    animation: pulse-node 3s ease-in-out infinite;
+  }
+  .n1 { animation-delay: 0s; }
+  .n2 { animation-delay: 0.3s; }
+  .n3 { animation-delay: 0.6s; }
+  .n4 { animation-delay: 0.9s; }
+  .n5 { animation-delay: 1.2s; }
+  .n6 { animation-delay: 1.5s; }
+  .n7 { animation-delay: 0.45s; }
+  .n8 { animation-delay: 0.55s; }
+  .n9 { animation-delay: 1.05s; }
+  .n10 { animation-delay: 1.15s; }
+
+  @keyframes pulse-node {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+</style>
