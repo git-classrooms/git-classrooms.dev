@@ -4,22 +4,19 @@ const steps = [
     number: "01",
     title: "Create a Classroom",
     description:
-      "Set up a classroom linked to a GitLab group. Define assignments with starter code, deadlines, and grading criteria.",
-    code: "POST /api/classrooms\n  → GitLab group created\n  → Roles assigned",
+      "Set up a classroom linked to a GitLab group. Define assignments with starter code, deadlines, and grading criteria — all from the dashboard.",
   },
   {
     number: "02",
     title: "Students Join & Code",
     description:
       "Students accept invitations and receive personal or team repositories, cloned from your template with full Git workflow.",
-    code: "git clone classroom/assignment-1\ngit checkout -b solution\ngit push origin solution",
   },
   {
     number: "03",
     title: "Automatic Grading",
     description:
-      "Every push triggers a CI pipeline running your test suite. Results appear in the dashboard — instant feedback for students and teachers.",
-    code: "on: push\n  → run test suite\n  → report: 18/20 tests passed\n  → grade: 90%",
+      "Every push triggers a CI pipeline running your test suite. Results flow back into the dashboard — instant feedback for everyone.",
   },
 ];
 ---
@@ -40,48 +37,269 @@ const steps = [
       </p>
     </div>
 
-    <div class="relative">
-      <!-- Connecting line -->
-      <div
-        class="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2"
-        aria-hidden="true"
-      >
-      </div>
+    <div class="flex flex-col gap-12 lg:gap-0">
+      {/* Step 1: Create Classroom — Dashboard UI mockup */}
+      <div class="animate-fade-in-up" style="animation-delay: 0.15s">
+        <div
+          class="relative flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-0"
+        >
+          <div class="flex-1 lg:text-right lg:pr-12 flex flex-col justify-center">
+            <div class="inline-flex items-center gap-3 mb-4 lg:flex-row-reverse">
+              <span
+                class="font-mono text-5xl font-bold gradient-text leading-none"
+                >{steps[0].number}</span
+              >
+            </div>
+            <h3 class="font-mono font-semibold text-xl mb-3">
+              {steps[0].title}
+            </h3>
+            <p class="text-muted leading-relaxed max-w-md inline-block">
+              {steps[0].description}
+            </p>
+          </div>
 
-      <div class="grid lg:grid-cols-3 gap-8">
-        {
-          steps.map((step, i) => (
+          <div class="hidden lg:flex flex-col items-center w-8 shrink-0">
+            <div class="flex-1 w-px bg-transparent"></div>
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-background shrink-0 glow-sm"></div>
+            <div class="flex-1 w-px bg-gradient-to-b from-primary/40 to-primary/10"></div>
+          </div>
+
+          <div class="flex-1 w-full max-w-md lg:pl-12">
             <div
-              class="relative animate-fade-in-up"
-              style={`animation-delay: ${0.15 + i * 0.15}s`}
+              class="glass rounded-xl overflow-hidden hover:border-primary/30 hover:shadow-[0_0_30px_hsl(185_100%_50%/0.06)] transition-all duration-500"
             >
-              <div class="glass rounded-xl p-6 h-full flex flex-col hover:border-primary/30 transition-all duration-300">
-                {/* Step number */}
-                <div class="flex items-center gap-3 mb-4">
-                  <span class="font-mono text-3xl font-bold gradient-text">
-                    {step.number}
-                  </span>
-                  <div class="h-px flex-1 bg-border" />
+              <div
+                class="flex items-center gap-3 px-4 py-2.5 border-b border-border/50"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]/80"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/80"></div>
                 </div>
-
-                <h3 class="font-mono font-semibold text-lg mb-3">
-                  {step.title}
-                </h3>
-
-                <p class="text-sm text-muted leading-relaxed mb-5 flex-1">
-                  {step.description}
-                </p>
-
-                {/* Mini code block */}
-                <div class="rounded-lg bg-background/80 border border-border/50 p-4">
-                  <pre class="font-mono text-xs text-muted leading-relaxed whitespace-pre-wrap">
-                    <code>{step.code}</code>
-                  </pre>
+                <span class="text-[11px] font-mono text-muted/60"
+                  >New Classroom</span
+                >
+              </div>
+              <div class="p-5 space-y-3">
+                <div>
+                  <div class="text-[11px] font-mono text-muted/60 mb-1.5">
+                    Name
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-md bg-background/60 border border-border/50 text-[13px] font-mono text-foreground"
+                  >
+                    Intro to Computer Science
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <div class="text-[11px] font-mono text-muted/60 mb-1.5">
+                      Students
+                    </div>
+                    <div
+                      class="px-3 py-2 rounded-md bg-background/60 border border-border/50 text-[13px] font-mono text-muted"
+                    >
+                      24
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-[11px] font-mono text-muted/60 mb-1.5">
+                      GitLab Group
+                    </div>
+                    <div
+                      class="px-3 py-2 rounded-md bg-background/60 border border-border/50 text-[13px] font-mono text-muted"
+                    >
+                      cs-intro-26
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-2 px-4 py-2 rounded-md bg-primary text-primary-foreground text-[13px] font-mono font-semibold text-center"
+                >
+                  Create Classroom
                 </div>
               </div>
             </div>
-          ))
-        }
+          </div>
+        </div>
+      </div>
+
+      {/* Step 2: Students Join & Code — Terminal */}
+      <div class="animate-fade-in-up" style="animation-delay: 0.3s">
+        <div
+          class="relative flex flex-col lg:flex-row-reverse items-center lg:items-stretch gap-8 lg:gap-0"
+        >
+          <div class="flex-1 lg:text-left lg:pl-12 flex flex-col justify-center">
+            <span
+              class="font-mono text-5xl font-bold gradient-text leading-none inline-block mb-4"
+              >{steps[1].number}</span
+            >
+            <h3 class="font-mono font-semibold text-xl mb-3">
+              {steps[1].title}
+            </h3>
+            <p class="text-muted leading-relaxed max-w-md">
+              {steps[1].description}
+            </p>
+          </div>
+
+          <div class="hidden lg:flex flex-col items-center w-8 shrink-0">
+            <div class="flex-1 w-px bg-gradient-to-b from-primary/10 to-primary/40"></div>
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-background shrink-0 glow-sm"></div>
+            <div class="flex-1 w-px bg-gradient-to-b from-primary/40 to-primary/10"></div>
+          </div>
+
+          <div class="flex-1 w-full max-w-md lg:pr-12">
+            <div
+              class="glass rounded-xl overflow-hidden hover:border-primary/30 hover:shadow-[0_0_30px_hsl(185_100%_50%/0.06)] transition-all duration-500"
+            >
+              <div
+                class="flex items-center gap-2 px-4 py-2.5 border-b border-border/50"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]/80"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/80"></div>
+                </div>
+                <span class="ml-2 text-[11px] font-mono text-muted/60"
+                  >~/assignments</span
+                >
+              </div>
+              <div class="p-4 font-mono text-[13px] leading-7">
+                <div class="flex gap-2">
+                  <span class="text-primary select-none">$</span>
+                  <span class="text-foreground"
+                    >git clone cs-intro-26/assignment-1</span
+                  >
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-muted select-none">&nbsp;</span>
+                  <span class="text-muted"
+                    >Cloning into 'assignment-1'...</span
+                  >
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-primary select-none">$</span>
+                  <span class="text-foreground">git checkout -b solution</span>
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-primary select-none">$</span>
+                  <span class="text-foreground">git push origin solution</span>
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-[hsl(140,70%,50%)] select-none">✓</span>
+                  <span class="text-muted"
+                    >Branch 'solution' pushed — CI running</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Step 3: Automatic Grading — Results dashboard */}
+      <div class="animate-fade-in-up" style="animation-delay: 0.45s">
+        <div
+          class="relative flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-0"
+        >
+          <div class="flex-1 lg:text-right lg:pr-12 flex flex-col justify-center">
+            <div class="inline-flex items-center gap-3 mb-4 lg:flex-row-reverse">
+              <span
+                class="font-mono text-5xl font-bold gradient-text leading-none"
+                >{steps[2].number}</span
+              >
+            </div>
+            <h3 class="font-mono font-semibold text-xl mb-3">
+              {steps[2].title}
+            </h3>
+            <p class="text-muted leading-relaxed max-w-md inline-block">
+              {steps[2].description}
+            </p>
+          </div>
+
+          <div class="hidden lg:flex flex-col items-center w-8 shrink-0">
+            <div class="flex-1 w-px bg-gradient-to-b from-primary/10 to-primary/40"></div>
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-background shrink-0 glow-sm"></div>
+            <div class="flex-1 w-px bg-transparent"></div>
+          </div>
+
+          <div class="flex-1 w-full max-w-md lg:pl-12">
+            <div
+              class="glass rounded-xl overflow-hidden hover:border-primary/30 hover:shadow-[0_0_30px_hsl(185_100%_50%/0.06)] transition-all duration-500"
+            >
+              <div
+                class="flex items-center gap-3 px-4 py-2.5 border-b border-border/50"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]/80"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/80"></div>
+                </div>
+                <span class="text-[11px] font-mono text-muted/60"
+                  >Grading Results</span
+                >
+              </div>
+              <div class="p-5 space-y-3">
+                <div
+                  class="flex items-center justify-between px-3 py-2 rounded-md bg-background/60 border border-border/50"
+                >
+                  <span class="text-[13px] font-mono text-foreground"
+                    >assignment-1</span
+                  >
+                  <span
+                    class="text-[12px] font-mono font-semibold text-[hsl(140,70%,50%)]"
+                    >18/20 passed</span
+                  >
+                </div>
+                <div class="px-3">
+                  <div class="flex justify-between text-[11px] font-mono mb-2">
+                    <span class="text-muted">Test Coverage</span>
+                    <span class="text-primary">90%</span>
+                  </div>
+                  <div
+                    class="h-2 rounded-full bg-background/80 border border-border/30 overflow-hidden"
+                  >
+                    <div
+                      class="h-full rounded-full bg-gradient-to-r from-primary to-[hsl(280,100%,60%)]"
+                      style="width: 90%"
+                    >
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 pt-1">
+                  <div
+                    class="text-center px-2 py-2 rounded-md bg-[hsl(140,70%,50%)]/5 border border-[hsl(140,70%,50%)]/20"
+                  >
+                    <div
+                      class="text-lg font-mono font-bold text-[hsl(140,70%,50%)]"
+                    >
+                      18
+                    </div>
+                    <div class="text-[10px] font-mono text-muted">passed</div>
+                  </div>
+                  <div
+                    class="text-center px-2 py-2 rounded-md bg-[#ff5f57]/5 border border-[#ff5f57]/20"
+                  >
+                    <div class="text-lg font-mono font-bold text-[#ff5f57]">
+                      2
+                    </div>
+                    <div class="text-[10px] font-mono text-muted">failed</div>
+                  </div>
+                  <div
+                    class="text-center px-2 py-2 rounded-md bg-[hsl(280,100%,60%)]/5 border border-[hsl(280,100%,60%)]/20"
+                  >
+                    <div
+                      class="text-lg font-mono font-bold text-[hsl(280,100%,70%)]"
+                    >
+                      A-
+                    </div>
+                    <div class="text-[10px] font-mono text-muted">grade</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
