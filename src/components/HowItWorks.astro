@@ -1,0 +1,88 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Create a Classroom",
+    description:
+      "Set up a classroom linked to a GitLab group. Define assignments with starter code, deadlines, and grading criteria.",
+    code: "POST /api/classrooms\n  → GitLab group created\n  → Roles assigned",
+  },
+  {
+    number: "02",
+    title: "Students Join & Code",
+    description:
+      "Students accept invitations and receive personal or team repositories, cloned from your template with full Git workflow.",
+    code: "git clone classroom/assignment-1\ngit checkout -b solution\ngit push origin solution",
+  },
+  {
+    number: "03",
+    title: "Automatic Grading",
+    description:
+      "Every push triggers a CI pipeline running your test suite. Results appear in the dashboard — instant feedback for students and teachers.",
+    code: "on: push\n  → run test suite\n  → report: 18/20 tests passed\n  → grade: 90%",
+  },
+];
+---
+
+<section id="how-it-works" class="relative z-10 py-24 md:py-32">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center mb-16">
+      <h2
+        class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
+      >
+        How it <span class="gradient-text">works</span>
+      </h2>
+      <p
+        class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
+        style="animation-delay: 0.1s"
+      >
+        Three steps from setup to automated grading.
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- Connecting line -->
+      <div
+        class="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {
+          steps.map((step, i) => (
+            <div
+              class="relative animate-fade-in-up"
+              style={`animation-delay: ${0.15 + i * 0.15}s`}
+            >
+              <div class="glass rounded-xl p-6 h-full flex flex-col hover:border-primary/30 transition-all duration-300">
+                {/* Step number */}
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="font-mono text-3xl font-bold gradient-text">
+                    {step.number}
+                  </span>
+                  <div class="h-px flex-1 bg-border" />
+                </div>
+
+                <h3 class="font-mono font-semibold text-lg mb-3">
+                  {step.title}
+                </h3>
+
+                <p class="text-sm text-muted leading-relaxed mb-5 flex-1">
+                  {step.description}
+                </p>
+
+                {/* Mini code block */}
+                <div class="rounded-lg bg-background/80 border border-border/50 p-4">
+                  <pre class="font-mono text-xs text-muted leading-relaxed whitespace-pre-wrap">
+                    <code>{step.code}</code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
