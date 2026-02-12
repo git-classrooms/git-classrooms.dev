@@ -10,7 +10,7 @@ const en = {
     techStack: "Tech Stack",
   },
   hero: {
-    badge: "self-hosted · open source · GitLab-powered",
+    badge: "open source · self-hosted",
     headlineTop: "Teach code with",
     cta: "View on GitHub",
     ctaSecondary: "Explore features",
@@ -121,7 +121,7 @@ const de: typeof en = {
     techStack: "Tech Stack",
   },
   hero: {
-    badge: "self-hosted · open source · GitLab-basiert",
+    badge: "open source · self-hosted",
     headlineTop: "Code lehren mit",
     cta: "Auf GitHub ansehen",
     ctaSecondary: "Features entdecken",
