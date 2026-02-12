@@ -1,42 +1,15 @@
 ---
-const features = [
-  {
-    icon: "gitlab",
-    title: "GitLab-Native",
-    description:
-      "Every classroom becomes a GitLab group. Students get real repositories with branches, merge requests, and CI/CD — no toy environments.",
-  },
-  {
-    icon: "bot",
-    title: "Automated Grading",
-    description:
-      "Push-triggered CI pipelines run your test suites automatically. Results flow back into the dashboard — no manual grading.",
-  },
-  {
-    icon: "layout",
-    title: "Classroom Management",
-    description:
-      "Create classrooms, invite students, distribute assignments, and track progress — all from a single dashboard.",
-  },
-  {
-    icon: "server",
-    title: "Self-Hosted",
-    description:
-      "Your infrastructure, your data. Deploy alongside your existing GitLab instance with full control over privacy and compliance.",
-  },
-  {
-    icon: "users",
-    title: "Team Projects",
-    description:
-      "Support for individual and group assignments. Students collaborate in shared repositories with proper access controls.",
-  },
-  {
-    icon: "zap",
-    title: "Real-World Workflow",
-    description:
-      "Students learn Git the way professionals use it — commits, branches, merge requests, code review, and CI/CD from day one.",
-  },
-];
+import type { Locale } from "../i18n";
+import { useTranslations } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).features;
+
+const featureIcons = ["gitlab", "bot", "layout", "server", "users", "zap"];
 
 const icons: Record<string, string> = {
   gitlab: `<path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 01-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 014.82 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0118.6 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.51L23 13.45a.84.84 0 01-.35.94z"/>`,
@@ -54,21 +27,20 @@ const icons: Record<string, string> = {
       <h2
         class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
       >
-        Everything you need to
-        <span class="gradient-text">teach code</span>
+        {t.heading}
+        <span class="gradient-text">{t.headingHighlight}</span>
       </h2>
       <p
         class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
         style="animation-delay: 0.1s"
       >
-        Built for educators who want their students working with real tools from
-        the start.
+        {t.subline}
       </p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        features.map((feature, i) => (
+        t.items.map((feature, i) => (
           <div
             class="group glass rounded-xl p-6 hover:border-primary/30 hover:shadow-[0_0_20px_hsl(185_100%_50%/0.08)] transition-all duration-300 animate-fade-in-up"
             style={`animation-delay: ${0.1 + i * 0.08}s`}
@@ -82,7 +54,7 @@ const icons: Record<string, string> = {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                set:html={icons[feature.icon]}
+                set:html={icons[featureIcons[i]]}
               />
             </div>
             <h3 class="font-mono font-semibold text-base mb-2">

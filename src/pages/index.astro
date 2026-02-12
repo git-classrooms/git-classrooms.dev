@@ -1,21 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Hero from "../components/Hero.astro";
-import Features from "../components/Features.astro";
-import HowItWorks from "../components/HowItWorks.astro";
-import TechStack from "../components/TechStack.astro";
-import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 ---
 
-<Layout title="git-classrooms — Self-Hosted Teaching with GitLab">
-  <Navbar />
-  <main>
-    <Hero />
-    <Features />
-    <HowItWorks />
-    <TechStack />
-  </main>
-  <Footer />
-</Layout>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>git-classrooms</title>
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script is:inline>
+      const lang = navigator.language?.startsWith("de") ? "de" : "en";
+      window.location.replace("/" + lang + "/");
+    </script>
+  </head>
+  <body></body>
+</html>

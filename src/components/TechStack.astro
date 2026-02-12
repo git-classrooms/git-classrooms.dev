@@ -1,4 +1,14 @@
 ---
+import type { Locale } from "../i18n";
+import { useTranslations } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).techStack;
+
 const technologies = [
   { name: "Go", category: "backend" },
   { name: "Fiber", category: "backend" },
@@ -28,14 +38,13 @@ const categoryColors: Record<string, string> = {
       <h2
         class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
       >
-        Built with <span class="gradient-text">modern tools</span>
+        {t.heading} <span class="gradient-text">{t.headingHighlight}</span>
       </h2>
       <p
         class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
         style="animation-delay: 0.1s"
       >
-        A robust, production-ready stack designed for reliability and
-        performance.
+        {t.subline}
       </p>
     </div>
 
@@ -61,19 +70,19 @@ const categoryColors: Record<string, string> = {
     >
       <span class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-primary/60"></span>
-        Backend
+        {t.categories.backend}
       </span>
       <span class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-[hsl(280,100%,60%)]/60"></span>
-        Frontend
+        {t.categories.frontend}
       </span>
       <span class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-[hsl(35,100%,55%)]/60"></span>
-        Integration
+        {t.categories.integration}
       </span>
       <span class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-[hsl(140,70%,45%)]/60"></span>
-        Infrastructure
+        {t.categories.infra}
       </span>
     </div>
   </div>

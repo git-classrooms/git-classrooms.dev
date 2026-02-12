@@ -1,24 +1,15 @@
 ---
-const steps = [
-  {
-    number: "01",
-    title: "Create a Classroom",
-    description:
-      "Set up a classroom linked to a GitLab group. Define assignments with starter code, deadlines, and grading criteria — all from the dashboard.",
-  },
-  {
-    number: "02",
-    title: "Students Join & Code",
-    description:
-      "Students accept invitations and receive personal or team repositories, cloned from your template with full Git workflow.",
-  },
-  {
-    number: "03",
-    title: "Automatic Grading",
-    description:
-      "Every push triggers a CI pipeline running your test suite. Results flow back into the dashboard — instant feedback for everyone.",
-  },
-];
+import type { Locale } from "../i18n";
+import { useTranslations } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).howItWorks;
+
+const stepNumbers = ["01", "02", "03"];
 ---
 
 <section id="how-it-works" class="relative z-10 py-24 md:py-32">
@@ -27,13 +18,13 @@ const steps = [
       <h2
         class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
       >
-        How it <span class="gradient-text">works</span>
+        {t.heading} <span class="gradient-text">{t.headingHighlight}</span>
       </h2>
       <p
         class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
         style="animation-delay: 0.1s"
       >
-        Three steps from setup to automated grading.
+        {t.subline}
       </p>
     </div>
 
@@ -47,14 +38,14 @@ const steps = [
             <div class="inline-flex items-center gap-3 mb-4 lg:flex-row-reverse">
               <span
                 class="font-mono text-5xl font-bold gradient-text leading-none"
-                >{steps[0].number}</span
+                >{stepNumbers[0]}</span
               >
             </div>
             <h3 class="font-mono font-semibold text-xl mb-3">
-              {steps[0].title}
+              {t.steps[0].title}
             </h3>
             <p class="text-muted leading-relaxed max-w-md inline-block">
-              {steps[0].description}
+              {t.steps[0].description}
             </p>
           </div>
 
@@ -77,13 +68,13 @@ const steps = [
                   <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/80"></div>
                 </div>
                 <span class="text-[11px] font-mono text-muted/60"
-                  >New Classroom</span
+                  >{t.ui.newClassroom}</span
                 >
               </div>
               <div class="p-5 space-y-3">
                 <div>
                   <div class="text-[11px] font-mono text-muted/60 mb-1.5">
-                    Name
+                    {t.ui.name}
                   </div>
                   <div
                     class="px-3 py-2 rounded-md bg-background/60 border border-border/50 text-[13px] font-mono text-foreground"
@@ -94,7 +85,7 @@ const steps = [
                 <div class="grid grid-cols-2 gap-3">
                   <div>
                     <div class="text-[11px] font-mono text-muted/60 mb-1.5">
-                      Students
+                      {t.ui.students}
                     </div>
                     <div
                       class="px-3 py-2 rounded-md bg-background/60 border border-border/50 text-[13px] font-mono text-muted"
@@ -104,7 +95,7 @@ const steps = [
                   </div>
                   <div>
                     <div class="text-[11px] font-mono text-muted/60 mb-1.5">
-                      GitLab Group
+                      {t.ui.gitlabGroup}
                     </div>
                     <div
                       class="px-3 py-2 rounded-md bg-background/60 border border-border/50 text-[13px] font-mono text-muted"
@@ -116,7 +107,7 @@ const steps = [
                 <div
                   class="mt-2 px-4 py-2 rounded-md bg-primary text-primary-foreground text-[13px] font-mono font-semibold text-center"
                 >
-                  Create Classroom
+                  {t.ui.createClassroom}
                 </div>
               </div>
             </div>
@@ -132,13 +123,13 @@ const steps = [
           <div class="flex-1 lg:text-left lg:pl-12 flex flex-col justify-center">
             <span
               class="font-mono text-5xl font-bold gradient-text leading-none inline-block mb-4"
-              >{steps[1].number}</span
+              >{stepNumbers[1]}</span
             >
             <h3 class="font-mono font-semibold text-xl mb-3">
-              {steps[1].title}
+              {t.steps[1].title}
             </h3>
             <p class="text-muted leading-relaxed max-w-md">
-              {steps[1].description}
+              {t.steps[1].description}
             </p>
           </div>
 
@@ -206,14 +197,14 @@ const steps = [
             <div class="inline-flex items-center gap-3 mb-4 lg:flex-row-reverse">
               <span
                 class="font-mono text-5xl font-bold gradient-text leading-none"
-                >{steps[2].number}</span
+                >{stepNumbers[2]}</span
               >
             </div>
             <h3 class="font-mono font-semibold text-xl mb-3">
-              {steps[2].title}
+              {t.steps[2].title}
             </h3>
             <p class="text-muted leading-relaxed max-w-md inline-block">
-              {steps[2].description}
+              {t.steps[2].description}
             </p>
           </div>
 
@@ -236,7 +227,7 @@ const steps = [
                   <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/80"></div>
                 </div>
                 <span class="text-[11px] font-mono text-muted/60"
-                  >Grading Results</span
+                  >{t.ui.gradingResults}</span
                 >
               </div>
               <div class="p-5 space-y-3">
@@ -248,12 +239,12 @@ const steps = [
                   >
                   <span
                     class="text-[12px] font-mono font-semibold text-[hsl(140,70%,50%)]"
-                    >18/20 passed</span
+                    >{t.ui.testsPassed}</span
                   >
                 </div>
                 <div class="px-3">
                   <div class="flex justify-between text-[11px] font-mono mb-2">
-                    <span class="text-muted">Test Coverage</span>
+                    <span class="text-muted">{t.ui.testCoverage}</span>
                     <span class="text-primary">90%</span>
                   </div>
                   <div
@@ -275,7 +266,7 @@ const steps = [
                     >
                       18
                     </div>
-                    <div class="text-[10px] font-mono text-muted">passed</div>
+                    <div class="text-[10px] font-mono text-muted">{t.ui.passed}</div>
                   </div>
                   <div
                     class="text-center px-2 py-2 rounded-md bg-[#ff5f57]/5 border border-[#ff5f57]/20"
@@ -283,7 +274,7 @@ const steps = [
                     <div class="text-lg font-mono font-bold text-[#ff5f57]">
                       2
                     </div>
-                    <div class="text-[10px] font-mono text-muted">failed</div>
+                    <div class="text-[10px] font-mono text-muted">{t.ui.failed}</div>
                   </div>
                   <div
                     class="text-center px-2 py-2 rounded-md bg-[hsl(280,100%,60%)]/5 border border-[hsl(280,100%,60%)]/20"
@@ -291,9 +282,9 @@ const steps = [
                     <div
                       class="text-lg font-mono font-bold text-[hsl(280,100%,70%)]"
                     >
-                      A-
+                      {t.ui.gradeValue}
                     </div>
-                    <div class="text-[10px] font-mono text-muted">grade</div>
+                    <div class="text-[10px] font-mono text-muted">{t.ui.grade}</div>
                   </div>
                 </div>
               </div>

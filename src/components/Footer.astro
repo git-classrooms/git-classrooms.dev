@@ -1,13 +1,21 @@
 ---
+import type { Locale } from "../i18n";
+import { useTranslations } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).footer;
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="relative z-10 border-t border-border/50">
   <div class="mx-auto max-w-6xl px-6 py-12">
     <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-      <!-- Logo & tagline -->
       <div class="flex flex-col items-center md:items-start gap-2">
-        <a href="/" class="flex items-center gap-3 group">
+        <a href={`/${locale}/`} class="flex items-center gap-3 group">
           <div
             class="w-7 h-7 rounded-md bg-primary/10 border border-primary/30 flex items-center justify-center"
           >
@@ -31,11 +39,10 @@ const currentYear = new Date().getFullYear();
           </span>
         </a>
         <p class="text-xs text-muted">
-          Self-hosted teaching with GitLab integration.
+          {t.tagline}
         </p>
       </div>
 
-      <!-- Links -->
       <div class="flex items-center gap-6">
         <a
           href="https://github.com/git-classrooms"
@@ -61,11 +68,9 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- Divider -->
     <div class="mt-8 pt-6 border-t border-border/30">
       <p class="text-center text-xs font-mono text-muted/60">
-        &copy; {currentYear} git-classrooms &middot; Built for educators, by
-        developers.
+        &copy; {currentYear} {t.copyright}
       </p>
     </div>
   </div>

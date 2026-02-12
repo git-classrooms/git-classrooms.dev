@@ -1,17 +1,23 @@
 ---
+import type { Locale } from "../i18n";
+
 interface Props {
   title: string;
   description?: string;
+  locale: Locale;
 }
 
 const {
   title,
   description = "Self-hosted teaching tool with GitLab integration for digital classrooms, coding assignments, and automated grading.",
+  locale,
 } = Astro.props;
+
+const altLocale = locale === "en" ? "de" : "en";
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang={locale} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +25,9 @@ const {
     <meta name="theme-color" content="#0ff0fc" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang={locale} href={`/${locale}/`} />
+    <link rel="alternate" hreflang={altLocale} href={`/${altLocale}/`} />
+    <link rel="alternate" hreflang="x-default" href="/en/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
