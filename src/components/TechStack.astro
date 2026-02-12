@@ -1,0 +1,80 @@
+---
+const technologies = [
+  { name: "Go", category: "backend" },
+  { name: "Fiber", category: "backend" },
+  { name: "PostgreSQL", category: "backend" },
+  { name: "GitLab API", category: "integration" },
+  { name: "React", category: "frontend" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "Tailwind CSS", category: "frontend" },
+  { name: "Vite", category: "frontend" },
+  { name: "Docker", category: "infra" },
+  { name: "CI/CD Pipelines", category: "infra" },
+];
+
+const categoryColors: Record<string, string> = {
+  backend: "border-primary/30 text-primary bg-primary/5 hover:bg-primary/10",
+  frontend:
+    "border-[hsl(280,100%,60%)]/30 text-[hsl(280,100%,70%)] bg-[hsl(280,100%,60%)]/5 hover:bg-[hsl(280,100%,60%)]/10",
+  integration:
+    "border-[hsl(35,100%,55%)]/30 text-[hsl(35,100%,65%)] bg-[hsl(35,100%,55%)]/5 hover:bg-[hsl(35,100%,55%)]/10",
+  infra: "border-[hsl(140,70%,45%)]/30 text-[hsl(140,70%,55%)] bg-[hsl(140,70%,45%)]/5 hover:bg-[hsl(140,70%,45%)]/10",
+};
+---
+
+<section id="tech-stack" class="relative z-10 py-24 md:py-32">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center mb-16">
+      <h2
+        class="font-mono font-bold text-3xl md:text-4xl tracking-tight animate-fade-in-up"
+      >
+        Built with <span class="gradient-text">modern tools</span>
+      </h2>
+      <p
+        class="mt-4 text-muted text-lg max-w-2xl mx-auto animate-fade-in-up"
+        style="animation-delay: 0.1s"
+      >
+        A robust, production-ready stack designed for reliability and
+        performance.
+      </p>
+    </div>
+
+    <div
+      class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto animate-fade-in-up"
+      style="animation-delay: 0.2s"
+    >
+      {
+        technologies.map((tech, i) => (
+          <span
+            class={`inline-flex items-center px-4 py-2 rounded-lg border font-mono text-sm font-medium transition-all duration-200 ${categoryColors[tech.category]}`}
+            style={`animation-delay: ${0.2 + i * 0.05}s`}
+          >
+            {tech.name}
+          </span>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-10 flex justify-center gap-8 text-xs font-mono text-muted animate-fade-in-up"
+      style="animation-delay: 0.5s"
+    >
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary/60"></span>
+        Backend
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[hsl(280,100%,60%)]/60"></span>
+        Frontend
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[hsl(35,100%,55%)]/60"></span>
+        Integration
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[hsl(140,70%,45%)]/60"></span>
+        Infrastructure
+      </span>
+    </div>
+  </div>
+</section>
