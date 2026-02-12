@@ -1,1 +1,75 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Sans", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-background: hsl(220 16% 8%);
+  --color-foreground: hsl(210 20% 95%);
+  --color-primary: hsl(185 100% 50%);
+  --color-primary-foreground: hsl(220 16% 8%);
+  --color-card: hsl(220 16% 12%);
+  --color-card-hover: hsl(220 16% 15%);
+  --color-border: hsl(220 16% 18%);
+  --color-muted: hsl(220 16% 60%);
+
+  --color-glow-primary: hsl(185 100% 50% / 0.15);
+  --color-glow-primary-strong: hsl(185 100% 50% / 0.3);
+  --color-glow-purple: hsl(280 100% 60% / 0.15);
+
+  --color-gradient-from: hsl(185 100% 50%);
+  --color-gradient-to: hsl(280 100% 60%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(185 100% 50% / 0.3);
+    color: white;
+  }
+}
+
+@utility glass {
+  background: hsl(220 16% 12% / 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(220 16% 18% / 0.5);
+}
+
+@utility glow {
+  box-shadow: 0 0 20px var(--color-glow-primary), 0 0 40px var(--color-glow-primary);
+}
+
+@utility glow-sm {
+  box-shadow: 0 0 10px var(--color-glow-primary);
+}
+
+@utility gradient-text {
+  background: linear-gradient(135deg, var(--color-gradient-from), var(--color-gradient-to));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
