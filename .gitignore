@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+.astro/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# os
+.DS_Store
+Thumbs.db
+
+# nix
+result
+.direnv/
+
+# debug
+npm-debug.log*
+pnpm-debug.log*
